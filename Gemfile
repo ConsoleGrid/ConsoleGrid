@@ -30,10 +30,6 @@ gem 'devise'
 gem 'activerecord-reputation-system', :require => 'reputation_system'
 # Imgur uploads
 gem 'imgur'
-# Better search
-# gem 'ransack'
-# Fuzzy String Searching (Use the latest from the git repo)
-gem 'fuzzily', :git => 'https://github.com/mezis/fuzzily.git'
 #=======================================
 
 # To use ActiveModel has_secure_password

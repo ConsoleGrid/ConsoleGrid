@@ -5,7 +5,7 @@ class Game < ActiveRecord::Base
   fuzzily_searchable :name
   
   def self.format_for_indexing(string)
-    formatted = string.downcase.gsub(/[^a-z1-9 ]/,"")
+    formatted = string.downcase.gsub(/[^a-z0-9 ]/,"")
     return formatted
   end
   
