@@ -1,0 +1,22 @@
+<% if @matches.count == 0 %>
+  <p>There's nothing here!</p>
+<% else %>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>Name</th>
+      <% if show_console %>
+        <th>Console</th>
+      <% end %>
+    </tr>
+    <% @matches.each do |game| %>
+      <tr>
+        <td><%= link_to game.name, game %></td>
+        <% if show_console %>
+          <td><%= link_to game.console.name, game.console %>
+        <% end %>
+        <%# link_to 'Edit', edit_game_path(game) %>
+        <%# link_to 'Destroy', game, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

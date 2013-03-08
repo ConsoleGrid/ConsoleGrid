@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  game: 
+  user: 
+  image_url: MyString
+
+two:
+  game: 
+  user: 
+  image_url: MyString

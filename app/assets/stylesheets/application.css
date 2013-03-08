@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+ #all-pictures-table {
+     display:block;
+     width:600px;
+     margin: 0 auto;
+ }
+
+.top-picture {
+    display:block;
+    padding-left:60px;
+    width:600px;
+    height:215px;
+    margin: 0 auto;
+}
+
+.top-picture img {
+    width:460px;
+}
+
+.vote {
+    width:50px;
+    height:215px;
+}
+
+.vote td {
+    border-top:0 !important;
+}
+
+.vote-count {
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.game-search-logo {
+    display:block;
+    width:650px;
+    margin:0 auto;
+    padding-top:100px;
+}
+
+.game-search-logo img {
+    display:block;
+    width:400px;
+    margin:0 auto;
+}
+
+/*.game-search-table {
+    width:650px;
+    display:block;
+    margin:0 auto;
+}*/
+
+.game-search {
+    width:940px;
+}
+
+.game-search .fields {
+    display:block;
+    width:650px;
+    margin:0 auto;
+}
+
+.game-search input[type=text] {
+    width:550px;
+}
+
+.game-search input[type=submit] {
+    width:62px;
+    margin-bottom:10px;
+}

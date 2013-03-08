@@ -1,0 +1,47 @@
+<% if @top_picture.present? %>
+  <section id="top-picture-section">
+    <div class="page-header">
+      <h1>Top Rated</h1>
+    </div>
+    <div class="hero-unit">
+      <div class="top-picture">
+        <%= render 'vote', :picture => @top_picture %>
+        <%= image_tag(@top_picture.image_url) %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%# Display all of the pictures %>
+<section id="all-picture-section">
+  <div class="page-header">
+    <h1>All Pictures</h1>
+  </div>
+  <% if @pictures.count != 0 %>
+    <table id="all-pictures-table">
+      <% @pictures.each do |picture| %>
+        <tr>
+          <td><%= render 'vote', :picture => picture %></td>
+          <td><%= image_tag(picture.image_url) %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p>Nothing has been added yet!</p>
+  <% end %>
+</section>
+
+<% if user_signed_in? %>
+  <section id="add_picture_section">
+    <div class="page-header">
+      <h1>Add Picture</h1>
+    </div>
+    <%= form_for @new_picture, :html => {:class => "form"} do |f| %>
+      <%= f.hidden_field :game_id %>
+      <%= f.file_field :image %>
+      <br />
+      <br />
+      <%= f.submit %>
+    <% end %>
+  </section>
+<% end %>

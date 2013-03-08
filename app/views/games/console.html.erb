@@ -1,0 +1,7 @@
+<h1><%= @console.name %></h1>
+
+<%= render 'table', :show_console => false %>
+
+<br />
+
+<%= link_to 'New Game', new_game_path(:console => @console.shortname) %>

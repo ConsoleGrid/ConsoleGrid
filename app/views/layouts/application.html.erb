@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Steamgrid</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "SteamGrid", root_path, :class => "brand" %>
+        <ul class="nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Consoles<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <% consoles = Console.all %>
+              <% consoles.each do |console| %>
+                <li><%= link_to console.name, console %></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav pull-right">
+          <% if user_signed_in? %>
+              <li><%= link_to current_user.email, "#" %></li><li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li><%= link_to "Login", new_user_session_path %></li><li><%= link_to 'Sign Up', new_user_registration_path  %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <div class="alert alert-<%= name == :notice ? "success" : "error" %>" style="margin-top:20px">
+          <a class="close" data-dismiss="alert">&#215;</a>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        </div>
+      <% end %>
+    <% end %>
+    <% num_crumbs = @breadcrumbs.count %>
+    <% if num_crumbs > 1 %>
+      <ul class="breadcrumb" style="margin-top:20px">
+        <% @breadcrumbs.each_index do |index| %>
+          <% crumb = @breadcrumbs[index] %>
+          <li>
+            <%= link_to crumb[:title], crumb[:link] %>
+            <% if num_crumbs != index + 1 %>
+              <span class="divider">></span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= yield %>
+  </div>
+</body>
+</html>
