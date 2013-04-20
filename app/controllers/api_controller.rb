@@ -9,17 +9,14 @@ class ApiController < ApplicationController
       logger.debug "Console: " + console_id.to_s + " Game: " + @matched_game.name
     end
     if @matched_game.nil?
-      # Respond with a 404, we couldn't find the game they wanted.
-      render :nothing => true, :status => 404
+      # Respond with a 204 No Content, we couldn't find the game they wanted.
+      head :no_content
     else
-      # Print the name of the game that was found (DEBUGGING)
-      # render :text => @matched_game.name
-      # return
       # Find the top rated picture for the game
       @picture = @matched_game.top_rated_picture
       if @picture.nil?
-        # If there are no pictures for the game, send a 204 No Content.
-        head :no_content
+        # If there are no pictures for the game, send an empty string
+        render :text => ""
       else
         # Otherwise, if we found a game and it has a picture, send the imgur
         # link for the user to download
