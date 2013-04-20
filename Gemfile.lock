@@ -1,10 +1,3 @@
-GIT
-  remote: https://github.com/mezis/fuzzily.git
-  revision: 49dc00545bba38c5b4d5cab244eb1084d17564d2
-  specs:
-    fuzzily (0.1.0)
-      activerecord (>= 2.3.17)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -128,7 +121,6 @@ DEPENDENCIES
   activerecord-reputation-system
   coffee-rails (~> 3.2.1)
   devise
-  fuzzily!
   imgur
   jquery-rails
   json

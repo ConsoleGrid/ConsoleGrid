@@ -2,7 +2,6 @@ class Game < ActiveRecord::Base
   belongs_to :console
   has_many :pictures
   attr_accessible :name
-  fuzzily_searchable :name
   
   def self.format_for_indexing(string)
     formatted = string.downcase.gsub(/[^a-z0-9 ]/,"")
