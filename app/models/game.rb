@@ -13,7 +13,7 @@ class Game < ActiveRecord::Base
   end
     
   def self.search(string, strict=true)
-    indices = Game.indices_for_string(string)
+    indices = Game.indices_for_string(string).uniq
     matches = InvertedIndex.where("word IN (?)",indices)
     if strict and matches.count != indices.count
       # Return a query that matches nothing
