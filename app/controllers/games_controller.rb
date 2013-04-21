@@ -2,12 +2,6 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    # ransack
-    # add_crumb("'#{params[:q][:name_cont]}'",games_path(:q => params[:q]))
-    # @search = Game.search(params[:q])
-    # @matches = @search.result(:distinct => true)
-    # Fuzzily
-    # @matches = Game.find_by_fuzzy_name(params[:q], :limit => 20)
     add_crumb("'#{params[:q]}'",games_path(:q => params[:q]))
     # My own inverted index
     @matches = Game.search(params[:q],false)
@@ -63,9 +57,10 @@ class GamesController < ApplicationController
     @game = Game.new()
     @game.name = params[:game][:name]
     @game.console_id = params[:game][:console_id]
-
+    
     respond_to do |format|
       if @game.save
+        @game.populate_inverted_index
         format.html { redirect_to @game, :notice => 'Game was successfully created.' }
         format.json { render :json => @game, :status => :created, :location => @game }
       else
@@ -104,23 +99,9 @@ class GamesController < ApplicationController
   end
   
   def find
-    # @search = Game.search(params[:q])
-    # @matches = @search.result(:distinct => true)
-    
     respond_to do |format|
       format.html # find.html.erb
     end
-  end
-  
-  def search
-    # add_crumb("'#{params[:q]}'",search_path(:q => params[:q]))
-    # @matches = Game.all
-    # @search = Game.search(params[:q])
-    # @matches = @search.result(:distinct => true)
-    # @matches = Game.find_by_fuzzy_name(params[:q],:limit => 10)
-    # respond_to do |format|
-    #   format.html # search.html.erb
-    # end
   end
   
   def console
