@@ -32,7 +32,6 @@ Console.all.each do |console|
         current = Game.new(:name => game)
         current.console = console
         current.save
-        current.populate_inverted_index
       end
     end
   end

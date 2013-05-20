@@ -2,10 +2,18 @@ class ApiController < ApplicationController
   def top_picture
     console_id = Console.find_by_shortname(params[:console]).id
     if console_id.nil?
-      @matched_game = Game.search(params[:game]).order("LENGTH(name)").limit(1).first
+      search = Game.search do
+        fulltext params[:game]
+        paginate :page => 1, :per_page => 1
+      end
     else
-      @matched_game = Game.search(params[:game]).where(:console_id => console_id).order("LENGTH(name)").limit(1).first
+      search = Game.search do
+        fulltext params[:game]
+        with :console_id, console_id
+        paginate :page => 1, :per_page => 1
+      end
     end
+    @matched_game = search.results.first
     if @matched_game.nil?
       # Respond with a 204 No Content, we couldn't find the game they wanted.
       head :no_content

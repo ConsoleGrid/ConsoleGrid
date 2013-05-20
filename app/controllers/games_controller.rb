@@ -4,7 +4,10 @@ class GamesController < ApplicationController
   def index
     add_crumb("'#{params[:q]}'",games_path(:q => params[:q]))
     # My own inverted index
-    @matches = Game.search(params[:q],false)
+    search = Game.search do
+      fulltext params[:q]
+    end
+    @matches = search.results
     respond_to do |format|
       format.html # search.html.erb
     end
@@ -60,7 +63,7 @@ class GamesController < ApplicationController
     
     respond_to do |format|
       if @game.save
-        @game.populate_inverted_index
+        # @game.populate_inverted_index
         format.html { redirect_to @game, :notice => 'Game was successfully created.' }
         format.json { render :json => @game, :status => :created, :location => @game }
       else

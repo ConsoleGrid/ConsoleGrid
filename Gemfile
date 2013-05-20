@@ -30,6 +30,9 @@ gem 'devise'
 gem 'activerecord-reputation-system', :require => 'reputation_system'
 # Imgur uploads
 gem 'imgur'
+# Sunspot (for searching)
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 #=======================================
 
 # To use ActiveModel has_secure_password
