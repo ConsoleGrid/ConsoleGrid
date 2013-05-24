@@ -36,3 +36,6 @@ Console.all.each do |console|
     end
   end
 end
+
+puts "Indexing with Solr"
+Game.reindex
