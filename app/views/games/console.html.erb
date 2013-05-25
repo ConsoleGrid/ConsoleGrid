@@ -1,7 +1,6 @@
 <h1><%= @console.name %></h1>
-
-<%= render 'table', :show_console => false %>
-
 <br />
-
 <%= link_to 'New Game', new_game_path(:console => @console.shortname) %>
+<br />
+<%= render 'table', :show_console => false %>
+<h4>Didn't find what you were looking for? Try <%= link_to "searching", homepage_search_path %>!</h4>

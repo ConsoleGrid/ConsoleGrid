@@ -110,7 +110,7 @@ class GamesController < ApplicationController
   def console
     @console = Console.find(params[:id])
     add_crumb(@console.name,console_path(@console))
-    @matches = @console.games
+    @matches = @console.games.limit(30)
     respond_to do |format|
       format.html # console.html.erb
     end
