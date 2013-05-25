@@ -3,9 +3,12 @@ class GamesController < ApplicationController
   # GET /games.json
   def index
     add_crumb("'#{params[:q]}'",games_path(:q => params[:q]))
-    # My own inverted index
+    # if not params.has_key? :page:
+    #   params[:page] = 1
+    # end
     search = Game.search do
       fulltext params[:q]
+      paginate :page => params[:page], :per_page => Game.per_page
     end
     @matches = search.results
     respond_to do |format|
@@ -108,9 +111,10 @@ class GamesController < ApplicationController
   end
   
   def console
+    @num_games = 30
     @console = Console.find(params[:id])
     add_crumb(@console.name,console_path(@console))
-    @matches = @console.games.limit(30)
+    @matches = @console.games.paginate(:page => params[:page])
     respond_to do |format|
       format.html # console.html.erb
     end

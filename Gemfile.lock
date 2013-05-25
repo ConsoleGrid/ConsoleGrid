@@ -65,6 +65,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.3)
+    mysql2 (0.3.11)
     nokogiri (1.5.9)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
@@ -125,6 +126,9 @@ GEM
       multi_json (>= 1.0.2, ~> 1.0)
     warden (1.2.1)
       rack (>= 1.0)
+    will_paginate (3.0.4)
+    will_paginate-bootstrap (0.2.2)
+      will_paginate (>= 3.0.3)
 
 PLATFORMS
   ruby
@@ -136,9 +140,12 @@ DEPENDENCIES
   imgur
   jquery-rails
   json
+  mysql2
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
   sqlite3
   sunspot_rails
   sunspot_solr
   uglifier (>= 1.0.3)
+  will_paginate
+  will_paginate-bootstrap

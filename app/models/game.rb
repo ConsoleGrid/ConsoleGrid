@@ -5,6 +5,8 @@ class Game < ActiveRecord::Base
   
   after_save :remove_from_inverted_index
   
+  self.per_page = 30
+  
   searchable do
     text :name
     integer :console_id

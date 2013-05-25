@@ -34,6 +34,9 @@ gem 'imgur'
 # Sunspot (for searching)
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+# Pagination
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 #=======================================
 
 # To use ActiveModel has_secure_password

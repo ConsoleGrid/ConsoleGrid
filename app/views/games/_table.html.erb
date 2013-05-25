@@ -1,5 +1,12 @@
 <% if @matches.empty? %>
-  <p>There's nothing here!</p>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>Name</th>
+    </tr>
+    <tr>
+      <td>There's nothing here!</td>
+    </tr>
+  </table>
 <% else %>
   <table class="table table-bordered table-striped">
     <tr>
@@ -14,9 +21,8 @@
         <% if show_console %>
           <td><%= link_to game.console.name, game.console %>
         <% end %>
-        <%# link_to 'Edit', edit_game_path(game) %>
-        <%# link_to 'Destroy', game, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
       </tr>
     <% end %>
   </table>
 <% end %>
+<%= will_paginate @matches, :renderer => BootstrapPagination::Rails %>
