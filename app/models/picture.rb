@@ -19,8 +19,14 @@ class Picture < ActiveRecord::Base
     #       "delete_page"=>"http://imgur.com/delete/VAiPkk5NoQ", 
     #       "image_hash"=>"NfuKF"
     # }
-    uploaded_img = imgur.upload_file image.tempfile.path
-    self.image_url = uploaded_img["original_image"]
+    begin
+      uploaded_img = imgur.upload_file image.tempfile.path
+      self.image_url = uploaded_img["original_image"]
+    rescue StandardError => error
+      logger.warn "@ ======================== @"
+      logger.warn "@ Error uploading image... @"
+      logger.warn "@ ======================== @"
+    end
   end
   
   def user_vote(user)
