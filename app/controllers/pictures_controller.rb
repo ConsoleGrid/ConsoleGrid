@@ -11,7 +11,7 @@ class PicturesController < ApplicationController
       if @picture.save
         format.html { redirect_to @picture.game, :notice => 'Picture was successfully created.' }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to @picture.game, :alert => 'There was an error uploading your image. Please try again, or try a different image' }
       end
     end
   end
