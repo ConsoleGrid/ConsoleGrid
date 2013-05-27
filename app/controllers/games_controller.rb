@@ -3,14 +3,7 @@ class GamesController < ApplicationController
   # GET /games.json
   def index
     add_crumb("'#{params[:q]}'",games_path(:q => params[:q]))
-    # if not params.has_key? :page:
-    #   params[:page] = 1
-    # end
-    search = Game.search do
-      fulltext Game.strip_specialchars(params[:q])
-      paginate :page => params[:page], :per_page => Game.per_page
-    end
-    @matches = search.results
+    @matches = Game.easy_search params[:q], params[:page], {}
     respond_to do |format|
       format.html # search.html.erb
     end

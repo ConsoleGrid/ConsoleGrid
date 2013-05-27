@@ -12,6 +12,19 @@ class Game < ActiveRecord::Base
     integer :console_id
   end
   
+  def self.easy_search(string, page, options)
+    options.reverse_merge! :console_id => nil, :per_page => Game.per_page
+    search_output = Game.search do
+      fulltext Game.strip_specialchars(string)
+      if options[:console_id].present?
+        with :console_id, options[:console_id]
+      end
+      paginate :page => page, :per_page => options[:per_page]
+    end
+    # Sort the results
+    search_output.results
+  end
+  
   def self.strip_specialchars(string)
     formatted = string.downcase.gsub(/[^a-z0-9 ]/,"")
     return formatted
