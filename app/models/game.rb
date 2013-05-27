@@ -35,17 +35,4 @@ class Game < ActiveRecord::Base
   def top_rated_picture
     self.pictures.find_with_reputation(:votes, :all, :order => "votes desc", :limit => 1).first
   end
-  
-  private
-  def remove_from_inverted_index
-    return unless self.destroyed?
-    indices = self.class.indices_for_string(self.name)
-    indices.each do |index|
-      invindex = InvertedIndex.where(:word => index)
-      doc_ids = invindex.document_ids
-      doc_ids.delete(self.id)
-      invindex.document_ids = doc_ids.delete(self.id)
-      invindex.save
-    end
-  end
 end
