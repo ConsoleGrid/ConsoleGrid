@@ -7,7 +7,7 @@ class GamesController < ApplicationController
     #   params[:page] = 1
     # end
     search = Game.search do
-      fulltext params[:q]
+      fulltext Game.strip_specialchars(params[:q])
       paginate :page => params[:page], :per_page => Game.per_page
     end
     @matches = search.results

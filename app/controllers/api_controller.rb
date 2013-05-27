@@ -3,12 +3,12 @@ class ApiController < ApplicationController
     console_id = Console.find_by_shortname(params[:console]).id
     if console_id.nil?
       search = Game.search do
-        fulltext params[:game]
+        fulltext Game.strip_specialchars(params[:game])
         paginate :page => 1, :per_page => 1
       end
     else
       search = Game.search do
-        fulltext params[:game]
+        fulltext Game.strip_specialchars(params[:game])
         with :console_id, console_id
         paginate :page => 1, :per_page => 1
       end

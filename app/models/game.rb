@@ -12,7 +12,7 @@ class Game < ActiveRecord::Base
     integer :console_id
   end
   
-  def self.format_for_indexing(string)
+  def self.strip_specialchars(string)
     formatted = string.downcase.gsub(/[^a-z0-9 ]/,"")
     return formatted
   end
@@ -20,24 +20,6 @@ class Game < ActiveRecord::Base
   def self.indices_for_string(string)
     Game.format_for_indexing(string).split(" ")
   end
-    
-  # def self.search(string, strict=true)
-  #   indices = Game.indices_for_string(string).uniq
-  #   matches = InvertedIndex.where("word IN (?)",indices)
-  #   if strict and matches.count != indices.count
-  #     # Return a query that matches nothing
-  #     return Game.where("id in ()")
-  #   end
-  #   docs = nil
-  #   matches.each do |iindex|
-  #     if docs.nil?
-  #       docs = iindex.document_ids
-  #     else
-  #       docs = docs & iindex.document_ids
-  #     end
-  #   end
-  #   Game.where("id IN (?)",docs)
-  # end
     
   def populate_inverted_index
     indices = self.class.indices_for_string(self.name)
