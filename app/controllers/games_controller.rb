@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   # GET /games.json
   def index
     add_crumb("'#{params[:q]}'",games_path(:q => params[:q]))
-    @matches = Game.easy_search params[:q], params[:page], {}
+    @matches = Game.easy_search params[:q], params[:page]
     respond_to do |format|
       format.html # search.html.erb
     end
