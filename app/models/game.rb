@@ -22,7 +22,13 @@ class Game < ActiveRecord::Base
       paginate :page => page, :per_page => options[:per_page]
     end
     # Sort the results
-    search_output.results
+    sl = string.length
+    search_results = search_output.results
+    return search_results.sort do |a,b|
+      adist = (a.name.length - sl).abs
+      bdist = (b.name.length - sl).abs
+      adist <=> bdist
+    end
   end
   
   def self.strip_specialchars(string)
