@@ -9,12 +9,6 @@
     </tr>
     <tr>
       <td>
-        <!-- <%# search_form_for @search, :class => "form game-search" do |f| %>
-          <div class="fields">
-            <%# f.text_field :name_cont %>
-            <%# submit_tag 'Search' %>
-          </div>
-        <%# end %> -->
         <%= form_tag games_path, :method => :get, :class => "form game-search" do %>
           <div class="fields">
             <%= text_field_tag :q %>
