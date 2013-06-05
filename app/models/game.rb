@@ -15,7 +15,7 @@ class Game < ActiveRecord::Base
   def self.easy_search(string, page, options={})
     options.reverse_merge! :console_id => nil, :per_page => Game.per_page
     search_output = Game.search do
-      fulltext Game.strip_specialchars(string)
+      fulltext Game.escape_solr_string(string)
       if options[:console_id].present?
         with :console_id, options[:console_id]
       end
@@ -31,8 +31,10 @@ class Game < ActiveRecord::Base
     end
   end
   
-  def self.strip_specialchars(string)
-    formatted = string.downcase.gsub(/[^a-z0-9 ]/,"")
+  def self.escape_solr_string(string)
+    formatted = string.downcase.gsub /[^a-z0-9 ]/ do |specialchar|
+      "//" << specialchar
+    end
     return formatted
   end
   
