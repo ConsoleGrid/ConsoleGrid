@@ -12,16 +12,15 @@
  *= require_tree .
  */
 
- #all-pictures-table {
-     display:block;
-     width:600px;
-     margin: 0 auto;
- }
+#all-pictures-table {
+    display:block;
+    width:600px;
+    margin: 0 auto;
+}
 
 .top-picture {
     display:block;
-    padding-left:60px;
-    width:600px;
+    width:510px;
     height:215px;
     margin: 0 auto;
 }
@@ -30,19 +29,59 @@
     width:460px;
 }
 
+/* Table based Vote displaying */
+
 .vote {
     width:50px;
     height:215px;
+}
+
+tr.vote-arrow, tr.vote-arrow td {
+    height: 78px;
+    max-height: 78px;
+}
+
+tr.vote-count, tr.vote-count td {
+    height: 58px;
+    max-height: 58px;
+}
+
+tr.vote-count td, li.vote-count {
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.vote tr {
+    
 }
 
 .vote td {
     border-top:0 !important;
 }
 
-.vote-count {
-    text-align:center;
-    font-size:22px;
-    font-weight:bold;
+/* List based Vote displaying */
+
+ul.vote {
+    margin:0;
+    display:inline;
+    list-style: none;
+}
+
+ul.vote li.spacer {
+    height:38px;
+}
+
+ul.vote li {
+    vertical-align:middle;
+}
+
+ul.vote li.vote-arrow {
+    height:50px;
+}
+
+ul.vote li.vote-count {
+    height:30px;
 }
 
 .game-search-logo {

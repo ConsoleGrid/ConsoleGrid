@@ -1,16 +1,16 @@
 <% vote = picture.user_vote(current_user) %>
-<table class="vote pull-left">
-  <tbody>
-    <% if vote == 1 %>
-      <tr><td><%= image_tag('upvoted.png') %></td></tr>
-    <% else %>
-      <tr><td><%= link_to image_tag('not_upvoted.png'), vote_picture_path(picture, :type => :up), :method => :post %></td></tr>
-    <% end %>
-    <tr><td class="vote-count"><%= picture.reputation_for(:votes).to_i %></td></tr>
-    <% if vote == -1 %>
-      <tr><td><%= image_tag('downvoted.png') %></td></tr>
-    <% else %>
-      <tr><td><%= link_to image_tag('not_downvoted.png'), vote_picture_path(picture, :type => :down), :method => :post %></td></tr>
-    <% end %>
-  </tbody>
-</table>
+<ul class="vote pull-left">
+  <% if vote == 1 %>
+    <li class="vote-arrow"><%= image_tag('upvoted.png') %></li>
+  <% else %>
+    <li class="vote-arrow"><%= link_to image_tag('not_upvoted.png'), vote_picture_path(picture, :type => :up), :method => :post %></li>
+  <% end %>
+  <li class="spacer"></li>
+  <li class="vote-count"><%= picture.reputation_for(:votes).to_i %></li>
+  <li class="spacer"></li>
+  <% if vote == -1 %>
+    <li class="vote-arrow"><%= image_tag('downvoted.png') %></li>
+  <% else %>
+    <li class="vote-arrow"><%= link_to image_tag('not_downvoted.png'), vote_picture_path(picture, :type => :down), :method => :post %></li>
+  <% end %>
+</ul>
