@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   
   has_many :evaluations, :class_name => "RSEvaluation", :as => :source
   
+  def name
+    self.email
+  end
+  
   def vote_for(picture)
     evaluation = ReputationSystem::Evaluation.find_by_reputation_name_and_source_and_target(:votes,self,picture)
     if evaluation.nil?

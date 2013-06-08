@@ -1,7 +1,11 @@
 Steamgrid::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   match 'api/top_picture' => "api#top_picture", :as => :api_top_picture
 
   devise_for :users
+  ActiveAdmin.routes(self)
   
   resources :games
   

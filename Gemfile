@@ -37,6 +37,8 @@ gem 'sunspot_solr'
 # Pagination
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+# Admin interface
+gem 'activeadmin'
 #=======================================
 
 # To use ActiveModel has_secure_password
