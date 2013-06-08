@@ -1,9 +1,7 @@
 class Game < ActiveRecord::Base
   belongs_to :console
-  has_many :pictures
+  has_many :pictures, :dependent => :destroy
   attr_accessible :name
-  
-  after_save :remove_from_inverted_index
   
   self.per_page = 30
   
