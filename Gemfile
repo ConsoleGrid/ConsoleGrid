@@ -55,3 +55,6 @@ gem 'activeadmin'
 
 # To use debugger
 # gem 'ruby-debug'
+
+gem 'rb-readline', '~> 0.4.2'
+gem 'therubyracer'
