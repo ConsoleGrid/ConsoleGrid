@@ -30,3 +30,6 @@ Icon?
 .Trashes
 
 solr
+
+# Ignore compiled assets
+public/assets
