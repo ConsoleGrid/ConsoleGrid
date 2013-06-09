@@ -19,7 +19,7 @@
       <tr>
         <td class="game-table-name-cell">
           <%= link_to game.name, game %>
-          <%= link_to button_tag("Mark as duplicate", :class => "pull-right btn btn-mini btn-primary"), mark_as_duplicate_path(game), :class => "duplicate-link" %>
+          <%= link_to button_tag("Mark as duplicate", :class => "pull-right btn btn-mini btn-primary"), mark_as_duplicate_path(game), :method => :post, :class => "duplicate-link" %>
         </td>
         <% if show_console %>
           <td><%= link_to game.console.name, game.console %></td>
