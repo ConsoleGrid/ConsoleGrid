@@ -120,3 +120,7 @@ ul.vote li.vote-count {
 .game-search button {
     margin-bottom:10px;
 }
+
+.game-table td {
+    height:22px;
+}

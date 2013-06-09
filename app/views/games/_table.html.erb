@@ -8,7 +8,7 @@
     </tr>
   </table>
 <% else %>
-  <table class="table table-bordered table-striped">
+  <table class="game-table table table-bordered table-striped">
     <tr>
       <th>Name</th>
       <% if show_console %>
@@ -17,12 +17,28 @@
     </tr>
     <% @matches.each do |game| %>
       <tr>
-        <td><%= link_to game.name, game %></td>
+        <td class="game-table-name-cell">
+          <%= link_to game.name, game %>
+          <%= link_to button_tag("Mark as duplicate", :class => "pull-right btn btn-mini btn-primary"), mark_as_duplicate_path(game), :class => "duplicate-link" %>
+        </td>
         <% if show_console %>
-          <td><%= link_to game.console.name, game.console %>
+          <td><%= link_to game.console.name, game.console %></td>
         <% end %>
       </tr>
     <% end %>
   </table>
 <% end %>
 <%= will_paginate @matches, :renderer => BootstrapPagination::Rails %>
+<script>
+$(document).ready(function(){
+  $(".duplicate-link").hide();
+  $(".game-table-name-cell").hover(
+    function() {
+      $(this).find('.duplicate-link').show();
+    }, 
+    function() {
+      $(this).find('.duplicate-link').hide();
+    }
+  );
+});
+</script>

@@ -5,8 +5,11 @@ class Game < ActiveRecord::Base
   
   self.per_page = 30
   
+  scope :duplicates, where(:duplicate => true)
+  
   searchable do
     text :name
+    boolean :duplicate
     integer :console_id
   end
   
@@ -14,10 +17,8 @@ class Game < ActiveRecord::Base
     options.reverse_merge! :console_id => nil, :per_page => Game.per_page
     search_output = Game.solr_search do
       fulltext Game.escape_solr_string(string)
-      # fulltext string
-      if options[:console_id].present?
-        with :console_id, options[:console_id]
-      end
+      with :duplicate, false
+      with :console_id, options[:console_id] unless options[:console_id].nil?
       paginate :page => page, :per_page => options[:per_page]
     end
     # Sort the results

@@ -107,9 +107,17 @@ class GamesController < ApplicationController
     @num_games = 30
     @console = Console.find(params[:id])
     add_crumb(@console.name,console_path(@console))
-    @matches = @console.games.paginate(:page => params[:page])
+    @matches = @console.games.where(:duplicate => false).paginate(:page => params[:page])
     respond_to do |format|
       format.html # console.html.erb
     end
+  end
+  
+  def mark_as_duplicate
+    @game = Game.find(params[:id])
+    @game.duplicate = true
+    @game.save
+    flash[:notice] = "Thanks for helping out! We will look into your report"
+    redirect_to(:back)
   end
 end
