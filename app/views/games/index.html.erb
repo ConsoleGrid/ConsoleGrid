@@ -1,5 +1,5 @@
 <h1>Search Results</h1>
 <br />
-<%= link_to 'New Game', new_game_path %>
-<br />
 <%= render 'table', :show_console => true %>
+<br />
+<%= link_to button_tag('New Game', :class => "btn btn-primary"), new_game_path %>

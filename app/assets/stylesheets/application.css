@@ -117,7 +117,6 @@ ul.vote li.vote-count {
     width:550px;
 }
 
-.game-search input[type=submit] {
-    width:62px;
+.game-search button {
     margin-bottom:10px;
 }

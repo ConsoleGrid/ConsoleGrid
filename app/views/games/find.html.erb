@@ -12,7 +12,7 @@
         <%= form_tag games_path, :method => :get, :class => "form game-search" do %>
           <div class="fields">
             <%= text_field_tag :q %>
-            <%= submit_tag 'Search' %>
+            <%= button_tag('<i class="icon-search icon-white"></i>'.html_safe, :type => "submit", :class => "btn btn-primary") %>
           </div>
         <% end %>
       </td>
