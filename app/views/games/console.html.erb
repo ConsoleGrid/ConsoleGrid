@@ -1,6 +1,7 @@
 <h1><%= @console.name %></h1>
 <br />
-<%= link_to 'New Game', new_game_path(:console => @console.shortname) %>
-<br />
 <%= render 'table', :show_console => false %>
+<br />
+<%= link_to button_tag('New Game', :class => "btn btn-primary"), new_game_path(:console => @console.shortname) %>
+<br />
 <h4>Didn't find what you were looking for? Try <%= link_to "searching", root_path %>!</h4>
