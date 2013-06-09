@@ -12,7 +12,7 @@ class Game < ActiveRecord::Base
   
   def self.easy_search(string, page, options={})
     options.reverse_merge! :console_id => nil, :per_page => Game.per_page
-    search_output = Game.search do
+    search_output = Game.solr_search do
       fulltext Game.escape_solr_string(string)
       # fulltext string
       if options[:console_id].present?
