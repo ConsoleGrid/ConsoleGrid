@@ -2,6 +2,7 @@ class Picture < ActiveRecord::Base
   belongs_to :game
   belongs_to :user
   attr_accessible :image_url
+  attr_accessible :game_id, :user_id, :image_url, :as => :admin
   
   validates_presence_of :game,:user,:image_url
   
