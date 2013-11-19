@@ -124,3 +124,11 @@ ul.vote li.vote-count {
 .game-table td {
     height:22px;
 }
+
+ul.dropdown-menu a small {
+    color:gray;
+}
+
+ul.dropdown-menu a:hover small {
+    color:white;
+}

@@ -20,8 +20,13 @@
             <ul class="dropdown-menu">
               <% consoles = Console.all %>
               <% consoles.each do |console| %>
-                <li><%= link_to console.name, console %></li>
+                <li><%= link_to console.name + " - " + console.shortname, console %></li>
               <% end %>
+              <li>
+                <a href="http://steamcommunity.com/groups/IceRM/discussions/0/666826251248041382/">
+                  <small>Something missing?, post a suggestion here</small>
+                </a>
+              </li>
             </ul>
           </li>
         </ul>
