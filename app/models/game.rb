@@ -2,6 +2,7 @@ class Game < ActiveRecord::Base
   belongs_to :console
   has_many :pictures, :dependent => :destroy
   attr_accessible :name
+  attr_accessible :name, :console_id, :duplicate, :as => :admin
   
   self.per_page = 30
   

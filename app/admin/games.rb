@@ -16,7 +16,7 @@ ActiveAdmin.register Game do
     column :created_at
     default_actions
   end
-  
+
   show do |game|
     attributes_table do
       row :id

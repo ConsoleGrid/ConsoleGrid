@@ -208,3 +208,9 @@ ActiveAdmin.setup do |config|
 
 
 end
+
+module ActiveAdmin
+  class BaseController
+    with_role :admin
+  end
+end
