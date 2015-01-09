@@ -31,10 +31,28 @@
           </li>
         </ul>
         <ul class="nav pull-right">
+        
+
           <% if user_signed_in? %>
               <li><%= link_to current_user.email, "#" %></li><li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
           <% else %>
-            <li><%= link_to "Login", new_user_session_path %></li><li><%= link_to 'Sign Up', new_user_registration_path  %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Sign In
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu" id="login-dropdown">
+                <%= form_for(:user, :url => session_path(:user)) do |f| %>
+                  <%= f.text_field :email %>
+                  <%= f.password_field :password %>
+                  <li><label class="checkbox"><%= f.check_box :remember_me %> Remember me</label></li>
+                  <li><%= f.submit 'Sign in', class: 'btn btn-block' %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Create account", new_user_registration_path %></li>
+                  <li><%= link_to "Forgot your password?", new_password_path(:user) %></li>
+                <% end %>
+              </ul>
+            </li>
           <% end %>
         </ul>
       </div>
