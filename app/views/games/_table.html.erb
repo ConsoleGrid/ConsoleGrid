@@ -19,7 +19,7 @@
     <% @matches.each do |game| %>
       <tr>
         <td>
-          <%= link_to image_tag(game.top_rated_picture.image_url, class: 'table-image'), game rescue 'No image!' %>
+          <%= game.pictures.empty? ? 'No image!' : link_to(image_tag(game.top_rated_picture.image_url, class: 'table-image'), game) %>
         </td>
         <td class="game-table-name-cell">
           <%= link_to game.name, game %>
