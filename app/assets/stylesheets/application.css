@@ -132,3 +132,7 @@ ul.dropdown-menu a small {
 ul.dropdown-menu a:hover small {
     color:white;
 }
+
+#login-dropdown {
+    padding: 10px 10px 0px 10px;
+}
