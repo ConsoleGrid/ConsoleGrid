@@ -10,11 +10,8 @@
 <% else %>
   <table class="game-table table table-bordered table-striped">
     <tr>
-      <th></th>
+      <th>Top Image</th>
       <th width='80%'>Name</th>
-      <% if show_console %>
-        <th>Console</th>
-      <% end %>
     </tr>
     <% @matches.each do |game| %>
       <tr>
@@ -22,12 +19,10 @@
           <%= game.pictures.empty? ? 'No image!' : link_to(image_tag(game.top_rated_picture.image_url, class: 'table-image'), game) %>
         </td>
         <td class="game-table-name-cell">
-          <%= link_to game.name, game %>
           <%= link_to button_tag("Mark as duplicate", :class => "pull-right btn btn-mini btn-primary"), mark_as_duplicate_path(game), :method => :post, :class => "duplicate-link" %>
+          <h4><%= link_to game.name, game %></h4>
+          <%= link_to game.console.name, game.console if show_console %><p><%= game.pictures.count %> other images</p>
         </td>
-        <% if show_console %>
-          <td><%= link_to game.console.name, game.console %></td>
-        <% end %>
       </tr>
     <% end %>
   </table>
