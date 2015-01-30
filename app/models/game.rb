@@ -24,12 +24,7 @@ class Game < ActiveRecord::Base
     end
     # Sort the results
     sl = string.length
-    search_results = search_output.results
-    return search_results.sort do |a,b|
-      adist = (a.name.length - sl).abs
-      bdist = (b.name.length - sl).abs
-      adist <=> bdist
-    end
+    return search_output.results
   end
   
   def self.escape_solr_string(string)
