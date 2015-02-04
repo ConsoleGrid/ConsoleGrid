@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  game: 
-  picture: 
-  user: 
-  value: 
+oot_one_scott_up:
+  game: zelda_ocarina_of_time
+  picture: oot_picture_one
+  user: scott
+  value: 1.0
 
-two:
-  game: 
-  picture: 
-  user: 
-  value: 
+oot_three_scott_down:
+  game: zelda_ocarina_of_time
+  picture: oot_picture_three
+  user: scott
+  value: _1.0

@@ -1,9 +1,41 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  shortname: MyString
+nes:
+  name: Nintendo Entertainment System
+  shortname: NES
 
-two:
-  name: MyString
-  shortname: MyString
+snes:
+  name: Super Nintendo
+  shortname: SNES
+
+n64:
+  name: Nintendo 64
+  shortname: N64
+
+gamecube:
+  name: Nintendo Gamecube
+  shortname: Gamecube
+
+wii:
+  name: Nintendo Wii
+  shortname: Wii
+
+ps1:
+  name: Sony Playstation
+  shortname: PS1
+
+ps2:
+  name: Sony Playstation 2
+  shortname: PS2
+
+genesis:
+  name: Sega Genesis
+  shortname: Genesis
+
+gameboy:
+  name: Nintendo Gameboy
+  shortname: Gameboy
+
+gba:
+  name: Nintendo Gameboy Advance
+  shortname: GBA

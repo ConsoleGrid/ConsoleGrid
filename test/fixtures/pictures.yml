@@ -1,11 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  game: 
-  user: 
-  image_url: MyString
+oot_picture_one:
+  game: zelda_ocarina_of_time
+  user: scott
+  image_url: http://i.imgur.com/BnU85Uh.png
 
-two:
-  game: 
-  user: 
-  image_url: MyString
+oot_picture_two:
+  game: zelda_ocarina_of_time
+  user: scott
+  image_url: http://i.imgur.com/KHMeOcy.jpg
+
+oot_picture_three:
+  game: zelda_ocarina_of_time
+  user: scott
+  image_url: http://i.imgur.com/0GFeKIA.png
