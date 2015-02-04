@@ -1,5 +1,14 @@
 Steamgrid::Application.routes.draw do
-  match 'api/top_picture' => "api#top_picture", :as => :api_top_picture
+  namespace :api do
+    namespace :v1 do
+      match 'top_picture' => "api#top_picture"
+    end
+  end
+
+  # Legacy Route for v1 of the API
+  scope "/api", :module => "api/v1" do
+    match 'top_picture' => "api#top_picture"
+  end
   
   resources :games, :except => [:edit, :update]
   match 'games/:id/mark_duplicate' => 'games#mark_as_duplicate', :via => :post, :as => :mark_as_duplicate
