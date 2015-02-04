@@ -2,13 +2,12 @@ require 'test_helper'
 
 class GamesControllerTest < ActionController::TestCase
   setup do
-    @game = games(:one)
+    @game = games(:mock_gameboy_1)
   end
 
   test "should get index" do
-    get :index
+    get :index, :q => "Zelda"
     assert_response :success
-    assert_not_nil assigns(:games)
   end
 
   test "should get new" do
@@ -27,16 +26,6 @@ class GamesControllerTest < ActionController::TestCase
   test "should show game" do
     get :show, :id => @game
     assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, :id => @game
-    assert_response :success
-  end
-
-  test "should update game" do
-    put :update, :id => @game, :game => { :name => @game.name }
-    assert_redirected_to game_path(assigns(:game))
   end
 
   test "should destroy game" do

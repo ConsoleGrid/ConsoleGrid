@@ -1,7 +1,7 @@
 Steamgrid::Application.routes.draw do
   match 'api/top_picture' => "api#top_picture", :as => :api_top_picture
   
-  resources :games
+  resources :games, :except => [:edit, :update]
   match 'games/:id/mark_duplicate' => 'games#mark_as_duplicate', :via => :post, :as => :mark_as_duplicate
   match 'consoles/:id' => 'games#console', :as => :console
   
