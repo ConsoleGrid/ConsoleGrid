@@ -3,6 +3,16 @@ Steamgrid::Application.routes.draw do
     namespace :v1 do
       match 'top_picture' => "api#top_picture"
     end
+
+    namespace :v2 do
+      match 'consoles' => 'consoles#list', :via => :get
+      match 'consoles/search' => 'consoles#search', :via => :get
+      match 'console/:id' => 'consoles#show', :via => :get
+      match 'console/:id/games' => 'consoles#games', :via => :get
+      match 'games/search' => 'games#search', :via => :get
+      match 'game/:id' => 'games#show', :via => :get
+      match 'game/:id/top_rated_picture' => 'games#top_rated_picture', :via => :get
+    end
   end
 
   # Legacy Route for v1 of the API

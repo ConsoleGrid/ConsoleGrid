@@ -28,12 +28,37 @@ class Picture < ActiveRecord::Base
       logger.warn "@ ======================== @"
     end
   end
-  
+
   def user_vote(user)
     if user.nil?
       return 0
     else
       return user.vote_for(self)
     end
+  end
+
+  def score()
+    self.reputation_for(:votes).to_i
+  end
+
+  def serializable_hash(options)
+    # Override which gives access to the `vote_for_user` property, which takes
+    # a User object and returns +1, -1, or 0 based on whether the user upvoted,
+    # downvoted, or didnt vote on a picture (respectively)
+    hash = super(options)
+    hash[:vote] = self.user_vote(options[:vote_for_user]) if options.include? :vote_for_user
+    # Rename the 'image_url' parameter to a better user-facing name. In this
+    # case, just 'url'
+    hash[:url] = hash.delete "image_url" if hash.include? "image_url"
+    return hash
+  end
+
+  def as_json(options={})
+    default_options = {
+      :only => [
+        :image_url,
+      ]
+    }
+    super(default_options.merge(options))
   end
 end

@@ -1,7 +1,7 @@
 class Api::V1::ApiController < ApplicationController
   def top_picture
     console_id = Console.find_by_shortname(params[:console]).id
-    @matched_game = Game.easy_search(params[:game], 1, :console_id => console_id).first
+    @matched_game = Game.easy_search(params[:game], :console_id => console_id).first
     # @matched_game = search.results.first
     if @matched_game.nil?
       # Respond with a 204 No Content, we couldn't find the game they wanted.
