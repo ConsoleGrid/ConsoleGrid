@@ -8,6 +8,11 @@ class Api::V1::ApiControllerTest < ActionController::TestCase
     Game.reindex
   end
 
+  test "should return no content when missing console" do
+    get :top_picture, :console => "Random", :game => "Irrelevant"
+    assert_response(204)
+  end
+
   test "should return no content when missing game" do
     # Zelda is in the fixtures, but only N64/Gamecube games
     get :top_picture, :console => "NES", :game => "Zelda"
