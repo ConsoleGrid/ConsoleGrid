@@ -136,3 +136,7 @@ ul.dropdown-menu a:hover small {
 #login-dropdown {
     padding: 10px 10px 0px 10px;
 }
+
+.table-image {
+    height: 92px;
+}
