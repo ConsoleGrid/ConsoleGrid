@@ -63,11 +63,6 @@ ActiveRecord::Schema.define(:version => 20130609034921) do
 
   add_index "games", ["console_id"], :name => "index_games_on_console_id"
 
-  create_table "inverted_indices", :id => false, :force => true do |t|
-    t.string "word"
-    t.text   "documents"
-  end
-
   create_table "pictures", :force => true do |t|
     t.integer  "game_id"
     t.integer  "user_id"
