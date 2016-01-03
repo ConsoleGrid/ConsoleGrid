@@ -86,7 +86,7 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    libv8 (3.11.8.17)
+    libv8 (3.16.14.13)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -131,7 +131,7 @@ GEM
     rb-readline (0.4.2)
     rdoc (3.12.2)
       json (~> 1.4)
-    ref (1.0.5)
+    ref (2.0.0)
     responders (0.9.3)
       railties (~> 3.1)
     rsolr (1.0.9)
@@ -154,8 +154,8 @@ GEM
       nokogiri
       sunspot (= 2.0.0)
     sunspot_solr (2.0.0)
-    therubyracer (0.11.4)
-      libv8 (~> 3.11.8.12)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
       ref
     thor (0.18.1)
     tilt (1.4.1)
@@ -194,3 +194,6 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   will_paginate
   will_paginate-bootstrap
+
+BUNDLED WITH
+   1.11.2
